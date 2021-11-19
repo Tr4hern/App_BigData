@@ -1,0 +1,19 @@
+artifact_path: model
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    python_version: 3.8.2
+  sklearn:
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 0.23.2
+run_id: b0c29c20dc3e4eeda703d92202cd64a8
+signature:
+  inputs: '[{"name": "DAYS_BIRTH", "type": "long"}, {"name": "REGION_RATING_CLIENT",
+    "type": "long"}, {"name": "REGION_RATING_CLIENT_W_CITY", "type": "long"}, {"name":
+    "REG_CITY_NOT_WORK_CITY", "type": "long"}, {"name": "EXT_SOURCE_2", "type": "double"},
+    {"name": "DAYS_LAST_PHONE_CHANGE", "type": "double"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+utc_time_created: '2021-11-19 14:23:10.506805'
