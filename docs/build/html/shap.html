@@ -5,11 +5,11 @@
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Model Training and Predictions" href="models.html" />
 
-    <meta name="generator" content="sphinx-4.2.0, furo 2021.10.09"/>
+    <meta name="generator" content="sphinx-4.2.0, furo 2021.11.16"/>
         <title>Shap application - BigDataApplicationsProject 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=0254c309f5cadf746f1a613e7677379ac9c8cdcd" />
-    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=16fb25fabf47304eee183a5e9af80b1ba98259b1" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=916d6ed8f59335acffa15474ff504849343d4c76" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
     
     
 
@@ -186,12 +186,46 @@
         <article role="main">
           <section id="shap-application">
 <h1>Shap application<a class="headerlink" href="#shap-application" title="Permalink to this headline">¶</a></h1>
-<section id="subtitle">
-<h2>Subtitle<a class="headerlink" href="#subtitle" title="Permalink to this headline">¶</a></h2>
+<section id="creating-a-treeexplainer">
+<h2>Creating a TreeExplainer<a class="headerlink" href="#creating-a-treeexplainer" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">explainer = shap.TreeExplainer(xgboost)</span>
+<span class="go">shaplayValues = explainer.shap_values(X_test)</span>
+</pre></div>
+</div>
+</section>
+<section id="using-shap-to-visualize-explanations">
+<h2>Using shap to visualize explanations<a class="headerlink" href="#using-shap-to-visualize-explanations" title="Permalink to this headline">¶</a></h2>
+<section id="a-specific-point-of-the-dataframe">
+<h3>A specific point of the dataframe<a class="headerlink" href="#a-specific-point-of-the-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>There are 101479 points in our X_test, in order to visualize the impact of each column on the target, we can make some graphs for a specific point.</p>
+<p>In our case, we used a bar plot to visualize these.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shap.bar_plot(shaplayValues[0], feature_names = X_test.columns, max_display = len(X_test.columns))</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/barplot.png"><img alt="_images/barplot.png" src="_images/barplot.png" style="width: 600px;"/></a>
+<p>We also tried a force plot.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shap.plots.force(explainer.expected_value, shaplayValues[0], X_test.iloc[0])</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/forceplot.png"><img alt="_images/forceplot.png" src="_images/forceplot.png" style="width: 600px;"/></a>
+</section>
+<section id="all-points-of-the-dataframe">
+<h3>All points of the dataframe<a class="headerlink" href="#all-points-of-the-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>In order to visualize the impacts of each classes on a single graph, we can do similar commands.
+However, there was a problem with some graphs, like the force one. Because of the number of points in X_test, our computers froze while trying to plot.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shap.plots.bar(explainer(X_test))</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/barplotallpoint.png"><img alt="_images/barplotallpoint.png" src="_images/barplotallpoint.png" style="width: 600px;"/></a>
+</section>
+<section id="a-summary-of-the-dataframe">
+<h3>A summary of the dataframe<a class="headerlink" href="#a-summary-of-the-dataframe" title="Permalink to this headline">¶</a></h3>
+<p>Finally, we ploted a summary of the impact of each classes in a summary_plot.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shap.summary_plot(shaplayValues, X_test, plot_size = (15, 10))</span>
+</pre></div>
+</div>
 <a class="reference internal image-reference" href="_images/summary.png"><img alt="_images/summary.png" src="_images/summary.png" style="width: 600px;"/></a>
+</section>
 </section>
 </section>
 
@@ -216,11 +250,9 @@
 
         <div class="related-information">
               Copyright &#169; 2021, Louis Tardy and Arnaud Pignerol |
-            Built with <a href="https://www.sphinx-doc.org/">Sphinx</a>
-              and
-              <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
-              <a href="https://github.com/pradyunsg/furo">Furo theme</a>. |
-            <a class="muted-link" href="_sources/shap.rst.txt"
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="_sources/shap.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -241,7 +273,13 @@
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Shap application</a><ul>
-<li><a class="reference internal" href="#subtitle">Subtitle</a></li>
+<li><a class="reference internal" href="#creating-a-treeexplainer">Creating a TreeExplainer</a></li>
+<li><a class="reference internal" href="#using-shap-to-visualize-explanations">Using shap to visualize explanations</a><ul>
+<li><a class="reference internal" href="#a-specific-point-of-the-dataframe">A specific point of the dataframe</a></li>
+<li><a class="reference internal" href="#all-points-of-the-dataframe">All points of the dataframe</a></li>
+<li><a class="reference internal" href="#a-summary-of-the-dataframe">A summary of the dataframe</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -257,6 +295,6 @@
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/scripts/main.js"></script>
+    <script src="_static/scripts/furo.js"></script>
     </body>
 </html>
