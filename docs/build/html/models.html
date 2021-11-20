@@ -197,7 +197,16 @@
 </section>
 <section id="use-of-different-models">
 <h2>Use of different models<a class="headerlink" href="#use-of-different-models" title="Permalink to this headline">¶</a></h2>
-<p>Model training will use the same pattern : call the model you want to use, fit the data, make the model do predictions and look for its score.</p>
+<dl class="simple">
+<dt>Model training will use the same pattern :</dt><dd><ul class="simple">
+<li><p>Call the model you want to use</p></li>
+<li><p>Fit the data</p></li>
+<li><p>Make the model do predictions</p></li>
+<li><p>Look for its score.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Each bullet point in this paragraph can be associated with a line in the following code blocks. In that way, we have for the following models :</p>
 <section id="xgboost">
 <h3>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">xgboost = xgb.XGBClassifier()</span>
@@ -224,6 +233,7 @@
 <span class="go">metrics.accuracy_score(y_test, gb_predict)</span>
 </pre></div>
 </div>
+<p>For these models, we get accuracies of respectively 91.75%, 91.58% and 91.76%</p>
 </section>
 </section>
 </section>

@@ -15,7 +15,13 @@ To allow models to be trained, we will specify which column the models should fo
 Use of different models 
 -----------------------
 
-Model training will use the same pattern : call the model you want to use, fit the data, make the model do predictions and look for its score.
+Model training will use the same pattern : 
+	* Call the model you want to use
+	* Fit the data
+	* Make the model do predictions 
+	* Look for its score.
+
+Each bullet point in this paragraph can be associated with a line in the following code blocks. In that way, we have for the following models :
 
 XGBoost
 ^^^^^^^
@@ -47,3 +53,4 @@ GradientBoosting
 	gb_predict = gb.predict(X_test)
 	metrics.accuracy_score(y_test, gb_predict)
 	
+For these models, we get accuracies of respectively 91.75%, 91.58% and 91.76%
