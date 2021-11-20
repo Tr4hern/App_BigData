@@ -54,3 +54,34 @@ GradientBoosting
 	metrics.accuracy_score(y_test, gb_predict)
 	
 For these models, we get accuracies of respectively 91.75%, 91.58% and 91.76%
+
+
+
+Mlfow UI
+--------
+
+To be able to track the different models with mlflow, we need to run this command line before any model :
+
+.. code-block:: console
+
+	mlflow.sklearn.autolog()
+
+Then open a terminal and execute :
+
+.. code-block:: console
+
+	mlflow ui
+
+It will show to which server we have to go (http://127.0.0.1:5000). 
+/!\\ The server needs the mlflow tracking to be ran to be able to work correctly. If the UI shows nothing, run the command line directly in the directory where the mlruns directory is.
+
+.. image:: mlflow_ui.png
+	:width: 600
+
+Then we just need to click on one of the different tracking done to see the code proposed to do predictions.
+
+.. image:: mlflow_predictions.png
+	:width: 600
+
+We can copy-paste the pandas proposition in a notebook and see the prediction done by the mlflow.
+On the most of them, it is around 91.75%.

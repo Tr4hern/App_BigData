@@ -236,6 +236,24 @@
 <p>For these models, we get accuracies of respectively 91.75%, 91.58% and 91.76%</p>
 </section>
 </section>
+<section id="mlfow-ui">
+<h2>Mlfow UI<a class="headerlink" href="#mlfow-ui" title="Permalink to this headline">¶</a></h2>
+<p>To be able to track the different models with mlflow, we need to run this command line before any model :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mlflow.sklearn.autolog()</span>
+</pre></div>
+</div>
+<p>Then open a terminal and execute :</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mlflow ui</span>
+</pre></div>
+</div>
+<p>It will show to which server we have to go (<a class="reference external" href="http://127.0.0.1:5000">http://127.0.0.1:5000</a>).
+/!\ The server needs the mlflow tracking to be ran to be able to work correctly. If the UI shows nothing, run the command line directly in the directory where the mlruns directory is.</p>
+<a class="reference internal image-reference" href="_images/mlflow_ui.png"><img alt="_images/mlflow_ui.png" src="_images/mlflow_ui.png" style="width: 600px;"/></a>
+<p>Then we just need to click on one of the different tracking done to see the code proposed to do predictions.</p>
+<a class="reference internal image-reference" href="_images/mlflow_predictions.png"><img alt="_images/mlflow_predictions.png" src="_images/mlflow_predictions.png" style="width: 600px;"/></a>
+<p>We can copy-paste the pandas proposition in a notebook and see the prediction done by the mlflow.
+On the most of them, it is around 91.75%.</p>
+</section>
 </section>
 
         </article>
@@ -297,6 +315,7 @@
 <li><a class="reference internal" href="#gradientboosting">GradientBoosting</a></li>
 </ul>
 </li>
+<li><a class="reference internal" href="#mlfow-ui">Mlfow UI</a></li>
 </ul>
 </li>
 </ul>
