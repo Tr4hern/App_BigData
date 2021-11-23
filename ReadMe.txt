@@ -3,7 +3,7 @@ Welcome to the Big Data Applications project by Louis Tardy and Arnaud Pignerol.
 
 The work was divided in several folders : data, docs, mlruns, modele and notebooks.
 
-Data : Contains the raw data extracted from Kaggle for the project 
+Data : Contains the raw data extracted from Kaggle for the project and the saved csv from the modifications done in the notebooks
 Docs : Contains our sphinx html files. These contain additionnal information and explanations about the project notebooks. The main page is located in docs/build/html/index.html
 mlruns : All the mlflow runs are stored here. To look for the results of these runs, you would have to open a terminal, go to the directory of your project and execute "mlflow ui". This will show you a local address where all the runs are saved.
 modele : Folder where the models trained in the notebooks are stored
@@ -15,3 +15,5 @@ notebooks : Contains the notebooks needed to run the project.
 	- Predictions // Look again at the models and look for their score / accuracy 
 	- Shap // Visual explanations of the data set
 
+Due to a restriction imposed by LFS for the free version, we could not push the data with modifications from our notebook or the saving of the Random Forest.
+To be able to have them, you may need to run the notebooks in the indicated order.
