@@ -212,16 +212,11 @@
 <section id="all-points-of-the-dataframe">
 <h3>All points of the dataframe<a class="headerlink" href="#all-points-of-the-dataframe" title="Permalink to this headline">¶</a></h3>
 <p>In order to visualize the impacts of each classes on a single graph, we can do similar commands.
-However, there was a problem with some graphs, like the force one. Because of the number of points in X_test, our computers froze while trying to plot.
-However, we can do it if we limit the number of points we take into account. Here we took 500 points for the force plot.</p>
+However, there was a problem with some graphs, like the force one. Because of the number of points in X_test, our computers froze while trying to plot.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shap.plots.bar(explainer(X_test))</span>
 </pre></div>
 </div>
 <a class="reference internal image-reference" href="_images/barplotallpoint.png"><img alt="_images/barplotallpoint.png" src="_images/barplotallpoint.png" style="width: 600px;"/></a>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">shap.plots.force(explainer.expected_value, shaplayValues[:500], X_test.iloc[:500])</span>
-</pre></div>
-</div>
-<a class="reference internal image-reference" href="forceplotallpoint.png"><img alt="forceplotallpoint.png" src="forceplotallpoint.png" style="width: 600px;"/></a>
 </section>
 <section id="a-summary-of-the-dataframe">
 <h3>A summary of the dataframe<a class="headerlink" href="#a-summary-of-the-dataframe" title="Permalink to this headline">¶</a></h3>

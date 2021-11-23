@@ -42,6 +42,7 @@ All points of the dataframe
 
 In order to visualize the impacts of each classes on a single graph, we can do similar commands.
 However, there was a problem with some graphs, like the force one. Because of the number of points in X_test, our computers froze while trying to plot.
+However, we can do it if we limit the number of points we take into account. Here we took 500 points for the force plot.
 
 .. code-block:: console
 
@@ -51,6 +52,13 @@ However, there was a problem with some graphs, like the force one. Because of th
 .. image:: barplotallpoint.png
 	:width: 600
 
+.. code-block:: console
+
+	shap.plots.force(explainer.expected_value, shaplayValues[:500], X_test.iloc[:500])
+
+
+.. image:: forceplotallpoint.png
+	:width: 600
 
 
 A summary of the dataframe
